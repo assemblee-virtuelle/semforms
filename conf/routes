@@ -1,0 +1,36 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /display            controllers.Application.displayURI(displayuri:String, blanknode:String ?= "", Edit:String?="")
+
+# GET     /display2            controllers.Application.displayURI2(displayuri:String)
+
+GET     /wordsearch         controllers.Application.wordsearch(q:String ?= "")
+
+GET     /download           controllers.Application.download( url:String )
+
+GET     /edit               controllers.Application.edit( url:String )
+
+POST    /save               controllers.Application.save()
+
+GET     /create             controllers.Application.create()
+# ( uri: String )
+
+GET     /sparql             controllers.Application.sparql( query:String )
+
+POST    /sparql             controllers.Application.sparql( query:String )
+
+GET     /select             controllers.Application.select( query:String )
+
+POST    /select             controllers.Application.select( query:String )
+
+GET     /backlinks         controllers.Application.backlinks(q:String ?= "")
+
+GET     /esearch           controllers.Application.extSearch(q:String ?= "")
+
+# Home page
+GET     /                   controllers.Application.index
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

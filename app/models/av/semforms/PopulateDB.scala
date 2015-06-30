@@ -1,0 +1,18 @@
+package av.semforms
+
+import deductions.runtime.sparql_cache.DataSourceManager
+import org.w3.banana.RDF
+import java.net.URL
+
+/**
+ * @author jmv
+ */
+trait PopulateDB[Rdf <: RDF, DATASET] extends DataSourceManager[Rdf, DATASET] {
+  /** replace Same Language Triples in named graph `graphURI` 
+   *  with the triples coming from given `url` */  
+  def setSpecificFormConfig() = {
+    replaceSameLanguageTriples( new URL(
+      "https://raw.githubusercontent.com/assemblee-virtuelle/pair/master/form_labels.ttl"),
+      "rdf-i18n" )
+    }
+}
