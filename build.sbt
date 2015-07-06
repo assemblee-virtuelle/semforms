@@ -1,6 +1,6 @@
 organization := "virtual-assembly"
 
-name := "semantic_forms_play"
+name := "semantic_forms_av"
 
 version := "1.0-SNAPSHOT"
 
