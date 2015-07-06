@@ -8,7 +8,7 @@ Properties_for=Propriétés de
 
 URI_to_display=URI à afficher
 String_to_search=Rechercher un PAIR
-Create_instance_of=Créer instance de 
+Create_instance_of=Créer un PAIR
 Creating_instance=Création d''une instance de la classe
 Paste_ontology=Coller ou taper l''URI d''une classe dans une ontologie.
 Other_vocabs=Autres vocabulaires
