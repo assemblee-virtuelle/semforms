@@ -20,7 +20,7 @@ object PopulateDBApp extends JenaModule
   resetRDFI18NTranslations()
   
   val form_specs = githubcontent +
-      "/assemblee-virtuelle/pair/form_guillaume.ttl"
+      "/assemblee-virtuelle/pair/master/form_guillaume.ttl"
   loadCommonVocabularies()
   loadFormSpecifications(form_specs)
   loadFromGitHubRDFI18NTranslations()
