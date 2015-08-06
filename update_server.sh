@@ -1,6 +1,8 @@
 #!/bin/bash
 
-echo "update semantic_forms Play! server when code has changed"
+echo "update Play! server when code has changed"
+echo maybe "cd ~/src/semantic_forms/scala/forms ; git pull --verbose ; sbt publishLocal" before ?
+echo
 SRC=$HOME/src/semforms
 APP=semantic_forms_av
 APPVERS=${APP}-1.0-SNAPSHOT
@@ -21,4 +23,4 @@ unzip $SRC/target/universal/${APPVERS}.zip
 
 cd ${APPVERS}
 ln -s ../TDBsf TDB
-nohup bin/${APP} -mem 100 -J-server -Dhttp.port=9000 &
+nohup bin/${APP} -mem 200 -J-server -Dhttp.port=9000 &
