@@ -14,3 +14,9 @@ Paste_ontology=Coller ou taper l''URI d''une classe dans une ontologie.
 Other_vocabs=Autres vocabulaires
 
 Search_placeholder=Entrer terme de recherche (en fait une expression régulière) qui correspond aux valeurs (objets des triplets)
+
+Person=Personne
+Organization=Organisation
+Project=Projet
+Idea=Idée
+Resource=Ressource
