@@ -1,5 +1,7 @@
 @(title: String)(content: Html)(implicit lang: Lang)
 
+@import java.lang.String; val avPrefix = "http://www.assemblee-virtuelle.org/ontologies/v1.owl#"
+
 <!DOCTYPE html>
 
 <html>
@@ -54,23 +56,23 @@
 				<h3>Choisissez un type de concept :</h3>
 				<div class="flexForm">
 					<form role="form" action="/create">
-						<input type="hidden" name="uri" id="uri" value="av:Person">
+						<input type="hidden" name="uri" id="uri" value="@(avPrefix)Person">
 						<input type="submit" name="create" id="create" value='@Messages("Person")' />
 					</form>
 					<form role="form" action="/create">
-						<input type="hidden" name="uri" id="uri" value="av:Organization">
+						<input type="hidden" name="uri" id="uri" value="@(avPrefix)Organization">
 						<input type="submit" name="create" id="create" value='@Messages("Organization")' />
 					</form>
 					<form role="form" action="/create">
-						<input type="hidden" name="uri" id="uri" value="av:Project">
+						<input type="hidden" name="uri" id="uri" value="@(avPrefix)Project">
 						<input type="submit" name="create" id="create" value='@Messages("Project")' />
 					</form>
 					<form role="form" action="/create">
-						<input type="hidden" name="uri" id="uri" value="av:Idea">
+						<input type="hidden" name="uri" id="uri" value="@(avPrefix)Idea">
 						<input type="submit" name="create" id="create" value='@Messages("Idea")' />
 					</form>
 					<form role="form" action="/create">
-						<input type="hidden" name="uri" id="uri" value="av:Resource">
+						<input type="hidden" name="uri" id="uri" value="@(avPrefix)Resource">
 						<input type="submit" name="create" id="create" value='@Messages("Resource")' />
 					</form>
 				</div>
