@@ -3,19 +3,20 @@ package controllers
 import play.api._
 import play.api.mvc._
 import play.api.mvc.Request
-import deductions.runtime.html.TableView
 import play.api.libs.iteratee.Enumerator
 import play.api.libs.iteratee.Iteratee
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
-import deductions.runtime.jena.JenaHelpers
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import scala.xml.NodeSeq
 import play.api.i18n.Lang
+import deductions.runtime.html.TableViewModule
+import com.hp.hpl.jena.query.Dataset
+import org.w3.banana.jena.Jena
 
-object Application extends Controller with TableView
-with JenaHelpers
+object Application extends Controller
 with RDFStoreLocalJena1Provider
+with TableViewModule[Jena, Dataset]
 with LanguageManagement {
   val glob = _root_.global1.Global
 

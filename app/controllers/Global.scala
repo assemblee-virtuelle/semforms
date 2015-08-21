@@ -2,7 +2,7 @@ import java.net.URLDecoder
 import java.net.URLEncoder
 import scala.xml.Elem
 import org.apache.log4j.Logger
-import deductions.runtime.html.TableView
+//import deductions.runtime.html.TableView
 import deductions.runtime.jena.RDFStoreObject
 import deductions.runtime.services.BrowsableGraph
 import deductions.runtime.services.FormSaver
@@ -10,7 +10,6 @@ import deductions.runtime.services.StringSearchSPARQL
 import play.api.mvc.AnyContentAsFormUrlEncoded
 import play.api.mvc.Controller
 import play.api.mvc.Request
-import deductions.runtime.html.CreationForm
 import scala.concurrent.Future
 import play.api.libs.iteratee.Enumerator
 import org.w3.banana.io.RDFWriter
@@ -49,7 +48,6 @@ package global1 {
   /** NOTE: important that JenaModule is first; otherwise ops may be null */
   object Global extends JenaModule
   with AbstractApplication[Jena, Dataset]
-  with JenaHelpers
   with RDFStoreLocalJena1Provider
     
   trait AbstractApplication[Rdf <: RDF, DATASET] extends Controller
@@ -78,7 +76,7 @@ package global1 {
     lazy val dl = this
     lazy val fs = this
     lazy val cf = this
-    lazy val allNamedGraphs = allNamedGraph
+    lazy implicit val allNamedGraphs = allNamedGraph
 
     // TODO use inverse Play's URI API
     val hrefDisplayPrefix = "/display?displayuri="
