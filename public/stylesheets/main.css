@@ -1,0 +1,8 @@
+.flexform {
+	display: flex;
+	margin:2rem 0;
+}
+
+.flexform form {
+	margin: 0 2rem;
+}
