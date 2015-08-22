@@ -28,6 +28,8 @@
 	<style type="text/css">		
 		.resize { resize: both; width: 100%; height: 100%; }
 		.overflow { overflow: auto; width: 100%; height: 100%; }
+		.flexform { display: flex; margin:2rem 0; }
+		.flexform form {margin: 0 2rem;}
 	</style> 
 </head>
 <body>
@@ -54,6 +56,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h3>Choisissez un type de concept :</h3>
+				<h4>Dans le modèle PAIR</h4>
 				<div class="flexForm">
 					<form role="form" action="/create">
 						<input type="hidden" name="uri" id="uri" value="@(avPrefix)Person">
@@ -76,6 +79,7 @@
 						<input type="submit" name="create" id="create" value='@Messages("Resource")' />
 					</form>
 				</div>
+				<h4>Dans une autre ontologie</h4>
 				<form role="form" action="/create">
 					<div class="col-md-6">
 						<!--input class="form-control" type="text" name='uri' placeholder="@Messages("Paste_ontology")"></input-->
