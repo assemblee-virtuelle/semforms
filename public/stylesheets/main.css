@@ -1,8 +1,8 @@
-.flexform {
+.flex-form {
 	display: flex;
 	margin:2rem 0;
 }
 
-.flexform form {
+.flex-form form {
 	margin: 0 2rem;
 }

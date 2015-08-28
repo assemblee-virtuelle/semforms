@@ -26,10 +26,10 @@
 	<script src="@routes.Assets.at("javascripts/wikipedia.js")" type="text/javascript"></script>
 	<script src="@routes.Assets.at("javascripts/formInteractions.js")" type="text/javascript"></script>
 
-	<style type="text/css">		
+	<style type="text/css">
 		.resize { resize: both; width: 100%; height: 100%; }
 		.overflow { overflow: auto; width: 100%; height: 100%; }
-	</style> 
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -39,12 +39,12 @@
 			<div class="col-md-12">
 				<form role="form" action="/wordsearch">
 					<div class="form-group">
-						<label class="col-md-2 control-label" for="q" title="Search URI whose value (object triple) match given regular expression">@Messages("String_to_search")</label>			      
+						<label class="col-md-2 control-label" for="q" title="Search URI whose value (object triple) match given regular expression">@Messages("String_to_search")</label>
 						<div class="col-md-6">
 							<input class="form-control" type="text" name='q'
 							placeholder="@Messages("Search_placeholder")"/>
 						</div>
-						<div class="col-md-4"> 
+						<div class="col-md-4">
 							<input class="btn btn-primary" type="submit" value=@Messages("Search") />
 						</div>
 						<input type="submit" style="display:none"/>
@@ -56,7 +56,7 @@
 			<div class="col-md-12">
 				<h3>Choisissez un type de concept :</h3>
 				<h4>Dans le modèle PAIR</h4>
-				<div class="flexForm">
+				<div class="flex-form">
 					<form role="form" action="/create">
 						<input type="hidden" name="uri" id="uri" value="@(avPrefix)Person">
 						<input type="submit" name="create" id="create" value='@Messages("Person")' />
