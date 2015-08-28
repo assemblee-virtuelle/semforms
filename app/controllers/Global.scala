@@ -49,7 +49,7 @@ package global1 {
   object Global extends JenaModule
   with AbstractApplication[Jena, Dataset]
   with RDFStoreLocalJena1Provider
-    
+
   trait AbstractApplication[Rdf <: RDF, DATASET] extends Controller
       with RDFCacheAlgo[Rdf, DATASET]
       with TableViewModule[Rdf, DATASET]
@@ -66,13 +66,13 @@ package global1 {
 	  implicit val turtleWriter: RDFWriter[Rdf, Try, Turtle]
 
     import ops._
-    
+
     Logger.getRootLogger().info(s"in Global")
-    
+
     var form: Elem = <p>initial value</p>
     lazy val tableView = this
     lazy val search = this
-    
+
     lazy val dl = this
     lazy val fs = this
     lazy val cf = this
@@ -95,7 +95,7 @@ package global1 {
         <div class="container">
           <div class="row">
             <h3>
-              { Messages("Properties_for")(PlayLang(lang)) }  
+              { Messages("Properties_for")(PlayLang(lang)) }
               <b>
                 <a href={ hrefEditPrefix + URLEncoder.encode(uri, "utf-8") } title="edit this URI">
                 { labelForURI(uri, lang) }</a>
@@ -140,8 +140,8 @@ package global1 {
         instanceLabel(URI(uri), allNamedGraphs, language)
       }).getOrElse(uri)
     }
-    
-//    def displayURI2(uriSubject: String) //  : Enumerator[scala.xml.Elem] 
+
+//    def displayURI2(uriSubject: String) //  : Enumerator[scala.xml.Elem]
 //    = {
 //      import ops._
 //      val graphFuture = RDFStoreObject.allNamedGraphsFuture
@@ -244,7 +244,7 @@ package global1 {
       val uri = uri0.trim()
 
       <div class="container">
-        <h3>{ Messages("Creating_instance")(PlayLang(lang)) }  
+        <h3>{ Messages("Creating_instance")(PlayLang(lang)) }
         <strong title={uri}>{ labelForURI(uri, lang) }</strong></h3>
         { cf.create(uri, lang, formSpecURI).get }
       </div>
@@ -305,24 +305,24 @@ caption {{
     		</table>
     		</p>
     }
-    
+
     def backlinksFuture(q: String = ""): Future[Elem] = {
       val fut = backlinks(q, hrefDisplayPrefix)
       wrapSearchResults(fut, q)
     }
-  
+
   def wrapSearchResults( fut: Future[Elem], q: String ): Future[Elem] =
 		  fut.map { v =>
-        <p> Searched for "{ q }" :<br/>
+        <p class="label-resultats"> Searched for "{ q }" :<br/>
           { v }
         </p>
   }
-  
+
   def esearchFuture(q:String = ""): Future[Elem] = {
 		 val fut = extendedSearch(q)
 		 wrapSearchResults( fut, q )
   }
-    
+
 //    def isURI(node: Rdf#Node) = ops.foldNode(node)(identity, x => None, x => None) != None
 
   }
