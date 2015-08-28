@@ -313,9 +313,10 @@ caption {{
 
   def wrapSearchResults( fut: Future[Elem], q: String ): Future[Elem] =
 		  fut.map { v =>
-        <p class="label-resultats"> Searched for "{ q }" :<br/>
-          { v }
-        </p>
+        <section class="resultats-instances">
+          <p class="label-recherche">Searched for "{ q }" :</p>
+        <div>{ v }</div>
+        </section>
   }
 
   def esearchFuture(q:String = ""): Future[Elem] = {

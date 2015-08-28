@@ -30,3 +30,9 @@ project/target
 *.log
 
 TODO.md
+
+# Repositories
+*.idn
+*.dat
+*.jrnl
+*.lock
