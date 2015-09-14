@@ -20,3 +20,5 @@ Organization=Organisation
 Project=Projet
 Idea=Idée
 Resource=Ressource
+Event=Evènement
+Task=Tâche

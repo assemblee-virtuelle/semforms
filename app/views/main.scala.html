@@ -77,6 +77,15 @@
 						<input type="hidden" name="uri" id="uri" value="@(avPrefix)Resource">
 						<input type="submit" name="create" id="create" value='@Messages("Resource")' />
 					</form>
+					//
+					<form role="form" action="/create">
+						<input type="hidden" name="uri" id="uri" value="@(avPrefix)Event">
+						<input type="submit" name="create" id="create" value='@Messages("Event")' />
+					</form>
+					<form role="form" action="/create">
+						<input type="hidden" name="uri" id="uri" value="@(avPrefix)Task">
+						<input type="submit" name="create" id="create" value='@Messages("Task")' />
+					</form>
 				</div>
 				<h4>Dans une autre ontologie</h4>
 				<form role="form" action="/create">
