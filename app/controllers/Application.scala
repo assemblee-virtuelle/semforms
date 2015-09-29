@@ -13,13 +13,15 @@ import play.api.i18n.Lang
 import deductions.runtime.html.TableViewModule
 import com.hp.hpl.jena.query.Dataset
 import org.w3.banana.jena.Jena
+import org.apache.log4j.Logger
 
 object Application extends Controller
 with RDFStoreLocalJena1Provider
 with TableViewModule[Jena, Dataset]
 with LanguageManagement {
   val glob = _root_.global1.Global
-
+  val logger = Logger.getRootLogger()
+  
   def index() = {
     Action { implicit request =>
       Ok(views.html.index(glob.form)(lang = chooseLanguageObject(request))) }

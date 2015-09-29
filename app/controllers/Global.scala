@@ -2,7 +2,6 @@ import java.net.URLDecoder
 import java.net.URLEncoder
 import scala.xml.Elem
 import org.apache.log4j.Logger
-//import deductions.runtime.html.TableView
 import deductions.runtime.jena.RDFStoreObject
 import deductions.runtime.services.BrowsableGraph
 import deductions.runtime.services.FormSaver
@@ -39,6 +38,7 @@ import deductions.runtime.services.ReverseLinksSearchSPARQL
 import deductions.runtime.services.ExtendedSearchSPARQL
 import scala.concurrent.ExecutionContext.Implicits.global
 import play.api.i18n.{ Lang => PlayLang, _ }
+import deductions.runtime.abstract_syntax.InstanceLabelsInferenceMemory
 
 /** NOTE: was obliged to rename global to global1
  *  because of Scala compiler bug:
@@ -56,7 +56,7 @@ package global1 {
       with StringSearchSPARQL[Rdf, DATASET]
       with ReverseLinksSearchSPARQL[Rdf, DATASET]
       with ExtendedSearchSPARQL[Rdf, DATASET]
-      with InstanceLabelsInference2[Rdf]
+      with InstanceLabelsInferenceMemory[Rdf, DATASET]
       with RDFStoreLocalProvider[Rdf, DATASET]
   with BrowsableGraph[Rdf, DATASET]
   with FormSaver[Rdf, DATASET]
@@ -67,6 +67,7 @@ package global1 {
 
     import ops._
 
+    val logger = Logger.getRootLogger()
     Logger.getRootLogger().info(s"in Global")
 
     var form: Elem = <p>initial value</p>
