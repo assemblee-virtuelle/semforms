@@ -53,12 +53,12 @@ with LanguageManagement {
   }
 
   def download(url: String) = {
-    Action { Ok(glob.downloadAsString(url)).as("text/turtle, charset=utf-8") }
+    Action { Ok(glob.downloadAsString(url)).as("text/turtle; charset=utf-8") }
   }
 
   /** cf https://www.playframework.com/documentation/2.3.x/ScalaStream */
   def download_chunked(url: String) = {
-    Action { Ok.chunked(glob.download(url)).as("text/turtle, charset=utf-8") }
+    Action { Ok.chunked(glob.download(url)).as("text/turtle; charset=utf-8") }
   }
 
 //  def chooseLanguage(request: Request[_]): String = {
