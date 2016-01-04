@@ -11,7 +11,7 @@ scalaVersion := "2.11.7"
 
 libraryDependencies += "deductions" %% "semantic_forms" % "1.0-SNAPSHOT"
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.0" % Test
+libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.5" % Test
 
 
 javacOptions ++= Seq("-source","1.7", "-target","1.7")
