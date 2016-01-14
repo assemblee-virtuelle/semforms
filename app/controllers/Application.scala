@@ -14,11 +14,13 @@ import deductions.runtime.html.TableViewModule
 import com.hp.hpl.jena.query.Dataset
 import org.w3.banana.jena.Jena
 import org.apache.log4j.Logger
+import deductions.runtime.services.DefaultConfiguration
 
 object Application extends Controller
 with RDFStoreLocalJena1Provider
 with TableViewModule[Jena, Dataset]
-with LanguageManagement {
+with LanguageManagement
+with DefaultConfiguration {
   val glob = _root_.global1.Global
   val logger = Logger.getRootLogger()
   
@@ -125,8 +127,8 @@ with LanguageManagement {
     <a href={"/esearch?q="+q}>
     Extended Search for &lt;{q}&gt;</a>
     </p>
-    fut.map{ res => Ok(views.html.index( NodeSeq
-        fromSeq Seq(extendedSearchLink, res))) }
+//    fut.map{ res => Ok(views.html.index( NodeSeq fromSeq Seq(extendedSearchLink, res))) }
+    fut.map{ res => Ok(views.html.index( Seq(extendedSearchLink, res))) }
 
   }
 

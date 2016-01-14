@@ -5,6 +5,7 @@ import com.hp.hpl.jena.query.Dataset
 import deductions.runtime.jena.JenaHelpers
 import org.w3.banana.jena.JenaModule
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
+import deductions.runtime.services.DefaultConfiguration
 
 /**
  * @author jmv
@@ -13,8 +14,9 @@ object PopulateDBApp extends JenaModule
     with App
     with JenaHelpers
     with RDFStoreLocalJena1Provider
-    with PopulateDB[Jena, Dataset] {
-  
+    with PopulateDB[Jena, Dataset]
+  with DefaultConfiguration {
+
 	resetCommonVocabularies()
   resetCommonFormSpecifications()
   resetRDFI18NTranslations()

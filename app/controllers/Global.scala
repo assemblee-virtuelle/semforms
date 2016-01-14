@@ -2,7 +2,6 @@ import java.net.URLDecoder
 import java.net.URLEncoder
 import scala.xml.Elem
 import org.apache.log4j.Logger
-import deductions.runtime.jena.RDFStoreObject
 import deductions.runtime.services.BrowsableGraph
 import deductions.runtime.services.FormSaver
 import deductions.runtime.services.StringSearchSPARQL
@@ -39,6 +38,8 @@ import deductions.runtime.services.ExtendedSearchSPARQL
 import scala.concurrent.ExecutionContext.Implicits.global
 import play.api.i18n.{ Lang => PlayLang, _ }
 import deductions.runtime.abstract_syntax.InstanceLabelsInferenceMemory
+import scala.xml.NodeSeq
+import deductions.runtime.services.DefaultConfiguration
 
 /** NOTE: was obliged to rename global to global1
  *  because of Scala compiler bug:
@@ -62,7 +63,7 @@ package global1 {
   with FormSaver[Rdf, DATASET]
   with CreationFormAlgo[Rdf, DATASET]
   with controllers.LanguageManagement
-{
+  with DefaultConfiguration {
 	  implicit val turtleWriter: RDFWriter[Rdf, Try, Turtle]
 
     import ops._
@@ -79,10 +80,9 @@ package global1 {
     lazy val cf = this
     lazy implicit val allNamedGraphs = allNamedGraph
 
-    // TODO use inverse Play's URI API
-    val hrefDisplayPrefix = "/display?displayuri="
-    val hrefDownloadPrefix = "/download?url="
-    val hrefEditPrefix ="/edit?url="
+//    val hrefDisplayPrefix = "/display?displayuri="
+//    val hrefDownloadPrefix = "/download?url="
+//    val hrefEditPrefix ="/edit?url="
 
 
     /** TODO move some formatting to views or separate function */
@@ -183,7 +183,7 @@ package global1 {
       s
     }
 
-    def wordsearchFuture(q: String = ""): Future[Elem] = {
+    def wordsearchFuture(q: String = ""): Future[NodeSeq] = {
       val fut = searchString(q, hrefDisplayPrefix)
       wrapSearchResults(fut, q)
     }
@@ -307,12 +307,12 @@ caption {{
     		</p>
     }
 
-    def backlinksFuture(q: String = ""): Future[Elem] = {
+    def backlinksFuture(q: String = ""): Future[NodeSeq] = {
       val fut = backlinks(q, hrefDisplayPrefix)
       wrapSearchResults(fut, q)
     }
 
-  def wrapSearchResults( fut: Future[Elem], q: String ): Future[Elem] =
+  def wrapSearchResults( fut: Future[NodeSeq], q: String ): Future[NodeSeq] =
 		  fut.map { v =>
         <section class="resultats-instances">
           <p class="label-recherche">Searched for "{ q }" :</p>
@@ -320,7 +320,7 @@ caption {{
         </section>
   }
 
-  def esearchFuture(q:String = ""): Future[Elem] = {
+  def esearchFuture(q:String = ""): Future[NodeSeq] = {
 		 val fut = extendedSearch(q)
 		 wrapSearchResults( fut, q )
   }
