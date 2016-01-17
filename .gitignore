@@ -27,6 +27,8 @@ target
 project/target
 .cache
 .classpath
+.project
+.settings/
 *.log
 
 TODO.md
@@ -36,3 +38,4 @@ TODO.md
 *.dat
 *.jrnl
 *.lock
+TDB/
