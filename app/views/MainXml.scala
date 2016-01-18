@@ -66,7 +66,7 @@ def mainPageHeader(lang: String) =
 
 		<div class="row">
 			<div class="col-md-12">
-				<form role="form" action="http://localhost:9000/wordsearch">
+				<form role="form" action="/wordsearch">
 					<div class="form-group">
 						<label class="col-md-2 control-label" for="q" title="Search URI whose value (object triple) match given regular expression">Rechercher un PAIR</label>
 						<div class="col-md-6">
@@ -87,39 +87,39 @@ placeholder="Entrer terme de recherche (en fait une expression régulière) qui 
 				<h3>Choisissez un type de concept :</h3>
 				<h4>Dans le modèle PAIR</h4>
 				<div class="flex-form">
-					<form role="form" action="http://localhost:9000/create">
+					<form role="form" action="/create">
 						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Person"/>
 						<input type="submit" name="create" id="create" value="Personne"/>
 					</form>
-					<form role="form" action="http://localhost:9000/create">
+					<form role="form" action="/create">
 						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Organization"/>
 						<input type="submit" name="create" id="create" value="Organisation"/>
 					</form>
-					<form role="form" action="http://localhost:9000/create">
+					<form role="form" action="/create">
 						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Project"/>
 						<input type="submit" name="create" id="create" value="Projet"/>
 					</form>
-					<form role="form" action="http://localhost:9000/create">
+					<form role="form" action="/create">
 						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Idea"/>
 						<input type="submit" name="create" id="create" value="Idée"/>
 					</form>
-					<form role="form" action="http://localhost:9000/create">
+					<form role="form" action="/create">
 						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Resource"/>
 						<input type="submit" name="create" id="create" value="Ressource"/>
 					</form>
 					//
-					<form role="form" action="http://localhost:9000/create">
+					<form role="form" action="/create">
 						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Event"/>
 						<input type="submit" name="create" id="create" value="Evènement"/>
 					</form>
-					<form role="form" action="http://localhost:9000/create">
+					<form role="form" action="/create">
 						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Task"/>
 						<input type="submit" name="create" id="create" value="Tâche"/>
 					</form>
 				</div>
 
 				<h4>Dans une autre ontologie</h4>
-				<form role="form" action="http://localhost:9000/create">
+				<form role="form" action="/create">
 					<div class="col-md-6">
 						<!--input class="form-control" type="text" name='uri' placeholder="Coller ou taper l&#x27;URI d&#x27;une classe dans une ontologie."></input-->
 						<select class="form-control" type="text" name="uri" list="class_uris">
