@@ -6,31 +6,14 @@ import deductions.runtime.views.ToolsPage
 import scala.xml.NodeSeq.seqToNodeSeq
 import deductions.runtime.html.EnterButtons
 import controllers._
+import deductions.runtime.services.Configuration
+import scala.xml.Text
 
-trait MainXml extends ToolsPage with EnterButtons {
+trait MainXml extends deductions.runtime.html.MainXml
+with Configuration {
 
-  /** main Page with a single content (typically a form) */
-  def mainPage(content: NodeSeq, userInfo: NodeSeq, lang: String = "en") = {
-    <html>
-      { head(lang) }
-      <body>
-        {
-          Seq(
-            userInfo,
-            mainPageHeader(lang),
-            content,
-            linkToToolsPage)
-        }
-      </body>
-    </html>
-  }
-
-  def linkToToolsPage = <p>
-                          ---<br/>
-                          <a href="/tools">Tools</a>
-                        </p>
-
-  def head(implicit lang: String = "en"): NodeSeq = {
+  /** TODO really need to override ? */
+  override def head(implicit lang: String = "en"): NodeSeq = {
     val bootstrap = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1"
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
@@ -86,50 +69,23 @@ placeholder="Entrer terme de recherche (en fait une expression régulière) qui 
 			<div class="col-md-12">
 				<h3>Choisissez un type de concept :</h3>
 				<h4>Dans le modèle PAIR</h4>
-				<div class="flex-form">
-					<form role="form" action="/create">
-						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Person"/>
-						<input type="submit" name="create" id="create" value="Personne"/>
-					</form>
-					<form role="form" action="/create">
-						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Organization"/>
-						<input type="submit" name="create" id="create" value="Organisation"/>
-					</form>
-					<form role="form" action="/create">
-						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Project"/>
-						<input type="submit" name="create" id="create" value="Projet"/>
-					</form>
-					<form role="form" action="/create">
-						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Idea"/>
-						<input type="submit" name="create" id="create" value="Idée"/>
-					</form>
-					<form role="form" action="/create">
-						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Resource"/>
-						<input type="submit" name="create" id="create" value="Ressource"/>
-					</form>
-					//
-					<form role="form" action="/create">
-						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Event"/>
-						<input type="submit" name="create" id="create" value="Evènement"/>
-					</form>
-					<form role="form" action="/create">
-						<input type="hidden" name="uri" id="uri" value="http://www.assemblee-virtuelle.org/ontologies/v1.owl#Task"/>
-						<input type="submit" name="create" id="create" value="Tâche"/>
-					</form>
-				</div>
+				<div class="flex-form"> { Seq(
+					creationFormAV(	"Person", "Personne" ),
+					creationFormAV( "Organization",	"Organisation" ),
+					creationFormAV( "Project", "Projet" ),
+					creationFormAV( "Idea",	"Idée" ),
+					creationFormAV(	"Resource", "Ressource" ),
+					Text("//"),
+					creationFormAV( "Event", "Evènement" ),
+					creationFormAV( "Task", "Tâche" )
+        )} </div>
 
 				<h4>Dans une autre ontologie</h4>
 				<form role="form" action="/create">
 					<div class="col-md-6">
 						<!--input class="form-control" type="text" name='uri' placeholder="Coller ou taper l&#x27;URI d&#x27;une classe dans une ontologie."></input-->
 						<select class="form-control" type="text" name="uri" list="class_uris">
-							<option label="foaf:Person" selected="selected"> http://xmlns.com/foaf/0.1/Person </option>
-							<option label="doap:Project"> http://usefulinc.com/ns/doap#Project </option>
-							<option label="foaf:Organization"> http://xmlns.com/foaf/0.1/Organization </option>
-							<!-- http://www.w3.org/2002/12/cal/ical#Vevent" // "cal:Vevent" -->
-							<option label="owl:Class"> http://www.w3.org/2002/07/owl#Class </option>
-							<option label="owl:DatatypeProperty"> http://www.w3.org/2002/07/owl#DatatypeProperty </option>
-							<option label="owl:ObjectProperty"> http://www.w3.org/2002/07/owl#ObjectProperty </option>
+                { suggestedClassesForCreation }
 						</select>
 					</div>
 					<div class="col-md-4">
@@ -138,7 +94,12 @@ placeholder="Entrer terme de recherche (en fait une expression régulière) qui 
 					<input type="submit" style="display:none"/>
 				</form>
 			</div>
-			</div>
-			</div>
-			
+		</div>
+	</div>
+
+  private def creationFormAV(classe: String, label: String): NodeSeq =
+    <form role="form" action="/create">
+      <input type="hidden" name="uri" id="uri" value={ prefixAVontology + classe }/>
+      <input type="submit" name="create" id="create" value={ label }/>
+    </form>
 }
