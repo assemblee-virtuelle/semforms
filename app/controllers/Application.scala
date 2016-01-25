@@ -285,4 +285,10 @@ object Application extends Controller
     }
   }
 
+  def makeHistoryUserActionsAction(userURI: String) =
+    Action { implicit request =>
+      val lang = chooseLanguage(request)
+      outputMainPage(makeHistoryUserActions(userURI, lang), lang)
+  }
+    
 }

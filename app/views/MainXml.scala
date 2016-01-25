@@ -12,8 +12,10 @@ import scala.xml.Text
 trait MainXml extends deductions.runtime.html.MainXml
 with Configuration {
 
-  /** TODO really need to override ? */
+  /** TODO really need to override ?
+   *  question is: do we need here more than the generic semantic_forms app ? */
   override def head(implicit lang: String = "en"): NodeSeq = {
+    /** TODO host bootstrap locally <<<<< */
     val bootstrap = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1"
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
@@ -67,17 +69,16 @@ placeholder="Entrer terme de recherche (en fait une expression régulière) qui 
 
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Choisissez un type de concept :</h3>
-				<h4>Dans le modèle PAIR</h4>
+				<h4 title="PAIR = Projet, Acteur, Idée, Resource">Choisissez un type de concept PAIR</h4>
 				<div class="flex-form"> { Seq(
 					creationFormAV(	"Person", "Personne" ),
 					creationFormAV( "Organization",	"Organisation" ),
 					creationFormAV( "Project", "Projet" ),
 					creationFormAV( "Idea",	"Idée" ),
-					creationFormAV(	"Resource", "Ressource" ),
-					Text("//"),
-					creationFormAV( "Event", "Evènement" ),
-					creationFormAV( "Task", "Tâche" )
+					creationFormAV(	"Resource", "Ressource" )
+//					Text("//"),
+//					creationFormAV( "Event", "Evènement" ),
+//					creationFormAV( "Task", "Tâche" )
         )} </div>
 
 				<h4>Dans une autre ontologie</h4>
