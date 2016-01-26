@@ -24,7 +24,9 @@ with Configuration {
 	<link rel="stylesheet" href={ routes.Assets.at("stylesheets/main.css").url }></link>
 
 	<script src={ routes.Assets.at("javascripts/jquery-1.11.2.min.js").url } type="text/javascript"></script>
-	<!-- bootstrap -->
+      
+       <link rel="shortcut icon" type="image/png" href={ routes.Assets.at("images/favicon.ico").url }/>
+
       <!-- bootstrap -->
       <link rel="stylesheet" href={ bootstrap + "/css/bootstrap.min.css"}/>
       <link rel="stylesheet" href={ bootstrap + "/css/bootstrap-theme.min.css"}/>
