@@ -47,7 +47,7 @@ with Configuration {
 </head>
   }
 
-def mainPageHeader(lang: String) =
+override def mainPageHeader(implicit lang: String) =
 	<div class="container">
 		<div class="row"><h3>Bienvenue à l'Assemblée Virtuelle</h3></div>
 
@@ -71,7 +71,7 @@ placeholder="Entrer terme de recherche (en fait une expression régulière) qui 
 
 		<div class="row">
 			<div class="col-md-12">
-				<h4 title="PAIR = Projet, Acteur, Idée, Resource">Choisissez un type de concept PAIR</h4>
+				<h4 title="PAIR = Projet, Acteur, Idée, Resource">Créez un PAIR</h4>
 				<div class="flex-form"> { Seq(
 					creationFormAV(	"Person", "Personne" ),
 					creationFormAV( "Organization",	"Organisation" ),
@@ -83,7 +83,7 @@ placeholder="Entrer terme de recherche (en fait une expression régulière) qui 
 //					creationFormAV( "Task", "Tâche" )
         )} </div>
 
-				<h4>Dans une autre ontologie</h4>
+				<div>Dans une autre ontologie</div>
 				<form role="form" action="/create">
 					<div class="col-md-6">
 						<!--input class="form-control" type="text" name='uri' placeholder="Coller ou taper l&#x27;URI d&#x27;une classe dans une ontologie."></input-->
