@@ -9,17 +9,17 @@ import controllers._
 import deductions.runtime.services.Configuration
 import scala.xml.Text
 
-trait MainXml extends deductions.runtime.html.MainXml
+trait MainXmlWithHead extends deductions.runtime.html.MainXml
 with Configuration {
 
   /** TODO really need to override ?
    *  question is: do we need here more than the generic semantic_forms app ? */
-  override def head(implicit lang: String = "en"): NodeSeq = {
+  override def head(title: String = "")(implicit lang: String = "en"): NodeSeq = {
     /** TODO host bootstrap locally <<<<< */
     val bootstrap = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1"
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-	<title>Bienvenue à l'Assemblée Virtuelle</title>
+  <title>{ val default = message("Welcome") ; if( title != "") title +" - "+default else default }</title>
 	<link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png"></link>
 	<link rel="stylesheet" href={ routes.Assets.at("stylesheets/main.css").url }></link>
 

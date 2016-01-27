@@ -12,7 +12,7 @@ import play.api.mvc.Action
 import play.api.mvc.AnyContentAsFormUrlEncoded
 import play.api.mvc.Controller
 import play.api.mvc.Request
-import views.MainXml
+import views.MainXmlWithHead
 import deductions.runtime.services.CORS
 import deductions.runtime.services.DefaultConfiguration
 
@@ -21,7 +21,7 @@ object Application extends Controller
     with ApplicationFacadeJena
     with LanguageManagement
     with Secured
-    with MainXml
+    with MainXmlWithHead
     with CORS
     with DefaultConfiguration {
   
@@ -41,9 +41,10 @@ object Application extends Controller
       println("displayURI: " + request)
       println("displayURI: " + Edit)
       val lang = chooseLanguage(request)
+      val title = labelForURITransaction(uri, lang)
       outputMainPage(
         htmlForm(uri, blanknode, editable = Edit != "",
-        lang), lang )
+        lang), lang, title=title )
     }
   }
 
@@ -58,10 +59,10 @@ object Application extends Controller
     
   /** generate a Main Page wrapping given XHTML content */
   private def outputMainPage( content: NodeSeq,
-      lang: String, userInfo: NodeSeq = <div/> )
+      lang: String, userInfo: NodeSeq = <div/>, title: String = "" )
   (implicit request: Request[_]) = {
       Ok( "<!DOCTYPE html>\n" +
-        mainPage( content, userInfo, lang )
+        mainPage( content, userInfo, lang, title )
       ).withHeaders("Access-Control-Allow-Origin" -> "*") // for dbpedia lookup
       .as("text/html; charset=utf-8")
   }
@@ -87,7 +88,6 @@ object Application extends Controller
           val lang = chooseLanguageObject(request).language
           val fut = Future.successful( showTriplesInGraph( uri, lang) )
           val rr = fut.map( r => outputMainPage( r, lang ) )
-//    Ok("showTriplesInGraphAction")
           rr
   }
   }
@@ -269,13 +269,6 @@ object Application extends Controller
     }
   }
 
-  def toolsPage = {
-    Action { implicit request =>
-      Ok(new ToolsPage with DefaultConfiguration {}.getPage)
-        .as("text/html; charset=utf-8")
-    }
-  }
-
   def httpOptions(path: String) = {
 	  Action { implicit request =>
       println("OPTIONS: " + request)
@@ -285,10 +278,17 @@ object Application extends Controller
     }
   }
 
+  def toolsPage = {
+    Action { implicit request =>
+      Ok(new ToolsPage with DefaultConfiguration {}.getPage)
+        .as("text/html; charset=utf-8")
+    }
+  }
+
   def makeHistoryUserActionsAction(userURI: String) =
     Action { implicit request =>
       val lang = chooseLanguage(request)
       outputMainPage(makeHistoryUserActions(userURI, lang), lang)
   }
-    
+
 }
