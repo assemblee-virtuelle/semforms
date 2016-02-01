@@ -24,4 +24,5 @@ unzip $SRC/target/universal/${APPVERS}.zip
 
 cd ${APPVERS}
 ln -s ../TDBsf TDB
+ln -s ../TDB2sf TDB2
 nohup bin/${APP} -mem 300 -J-server -Dhttp.port=9000 &
