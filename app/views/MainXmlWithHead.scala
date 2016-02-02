@@ -50,6 +50,8 @@ with Configuration {
 override def mainPageHeader(implicit lang: String) =
 	<div class="container">
 		<div class="row"><h3>Bienvenue à l'Assemblée Virtuelle</h3></div>
+    <bold><a href="https://github.com/jmvanel/semantic_forms/wiki/Manuel-utilisateur#avertissement-sur-lusage">
+           Avertissement !!! A LIRE</a></bold>
 
 		<div class="row">
 			<div class="col-md-12">
