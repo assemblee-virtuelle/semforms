@@ -38,8 +38,11 @@ object Application extends Controller
 
   def displayURI(uri: String, blanknode: String = "", Edit: String = "") = {
     Action { implicit request =>
-      println("displayURI: " + request)
-      println("displayURI: " + Edit)
+      println(s"""displayURI: $request IP ${request.remoteAddress}, host ${request.host}
+         displayURI headers ${request.headers}
+         displayURI tags ${request.tags}
+         """)
+      println(s"""displayURI: Edit "$Edit" """)
       val lang = chooseLanguage(request)
       val title = labelForURITransaction(uri, lang)
       outputMainPage(
