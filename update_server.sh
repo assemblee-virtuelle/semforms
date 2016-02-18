@@ -6,10 +6,11 @@ echo
 SRC=$HOME/src/semforms
 APP=semantic_forms_av
 APPVERS=${APP}-1.0-SNAPSHOT
+SBT=sbt
 
 cd $SRC
 git pull --verbose
-./activator dist
+$SBT dist
 echo "sofware recompiled!"
 
 cd ~/deploy
@@ -23,4 +24,5 @@ unzip $SRC/target/universal/${APPVERS}.zip
 
 cd ${APPVERS}
 ln -s ../TDBsf TDB
-nohup bin/${APP} -mem 200 -J-server -Dhttp.port=9000 &
+ln -s ../TDB2sf TDB2
+nohup bin/${APP} -mem 300 -J-server -Dhttp.port=9000 &
