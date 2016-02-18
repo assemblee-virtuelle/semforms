@@ -22,16 +22,15 @@ with Configuration {
   <title>{ val default = message("Welcome") ; if( title != "") title +" - "+default else default }</title>
 	<link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png"></link>
 	<link rel="stylesheet" href={ routes.Assets.at("stylesheets/main.css").url }></link>
+  <link rel="shortcut icon" type="image/png" href={ routes.Assets.at("images/favicon.ico").url }/>
 
 	<script src={ routes.Assets.at("javascripts/jquery-1.11.2.min.js").url } type="text/javascript"></script>
-      
-       <link rel="shortcut icon" type="image/png" href={ routes.Assets.at("images/favicon.ico").url }/>
 
-      <!-- bootstrap -->
-      <link rel="stylesheet" href={ bootstrap + "/css/bootstrap.min.css"}/>
-      <link rel="stylesheet" href={ bootstrap + "/css/bootstrap-theme.min.css"}/>
-      <script src={ bootstrap + "/js/bootstrap.min.js"}></script>
-
+  <!-- bootstrap -->
+  <link rel="stylesheet" href={ routes.Assets.at("stylesheets/bootstrap.min.css").url } />
+  <link rel="stylesheet" href={ routes.Assets.at("stylesheets/bootstrap-theme.min.css").url } />
+  <script src={ routes.Assets.at("javascripts/bootstrap.min.js").url } type="text/javascript"></script>
+			
 	<!--link rel="stylesheet" href={ routes.Assets.at("stylesheets/bootstrap.min.css").url }></link>
 	<link rel="stylesheet" href={ routes.Assets.at("bootstrap-theme.min.css").url }></link>
 	<script src={ routes.Assets.at("javascripts/bootstrap.min.js").url }></script
@@ -49,7 +48,9 @@ with Configuration {
 
 override def mainPageHeader(implicit lang: String) =
 	<div class="container">
-		<div class="row"><h3>Bienvenue à l'Assemblée Virtuelle</h3></div>
+		<div class="row">
+			<h3>Bienvenue à l'Assemblée Virtuelle</h3>
+		</div>
 
 		<div class="row">
 			<div class="col-md-12">
@@ -78,9 +79,6 @@ placeholder="Entrer terme de recherche (en fait une expression régulière) qui 
 					creationFormAV( "Project", "Projet" ),
 					creationFormAV( "Idea",	"Idée" ),
 					creationFormAV(	"Resource", "Ressource" )
-//					Text("//"),
-//					creationFormAV( "Event", "Evènement" ),
-//					creationFormAV( "Task", "Tâche" )
         )} </div>
 
 				<div>Dans une autre ontologie</div>
