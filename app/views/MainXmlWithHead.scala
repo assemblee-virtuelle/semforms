@@ -39,6 +39,10 @@ with Configuration {
 	<script src={ routes.Assets.at("javascripts/wikipedia.js").url } type="text/javascript"></script>
 	<script src={ routes.Assets.at("javascripts/formInteractions.js").url } type="text/javascript"></script>
 
+  <!-- RDF Viewer-->
+  <link rel="stylesheet" href={ routes.Assets.at("stylesheets/rdfviewer.css").url } />
+  <script src={ routes.Assets.at("javascripts/rdf.js").url } type="text/javascript"></script>
+
 	<style type="text/css">
 		.resize {{ resize: both; width: 100%; height: 100%; }}
 		.overflow {{ overflow: auto; width: 100%; height: 100%; }}
