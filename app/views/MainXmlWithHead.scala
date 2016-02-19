@@ -30,11 +30,6 @@ with Configuration {
   <link rel="stylesheet" href={ routes.Assets.at("stylesheets/bootstrap.min.css").url } />
   <link rel="stylesheet" href={ routes.Assets.at("stylesheets/bootstrap-theme.min.css").url } />
   <script src={ routes.Assets.at("javascripts/bootstrap.min.js").url } type="text/javascript"></script>
-			
-	<!--link rel="stylesheet" href={ routes.Assets.at("stylesheets/bootstrap.min.css").url }></link>
-	<link rel="stylesheet" href={ routes.Assets.at("bootstrap-theme.min.css").url }></link>
-	<script src={ routes.Assets.at("javascripts/bootstrap.min.js").url }></script
-  -->
 
 	<script src={ routes.Assets.at("javascripts/wikipedia.js").url } type="text/javascript"></script>
 	<script src={ routes.Assets.at("javascripts/formInteractions.js").url } type="text/javascript"></script>
