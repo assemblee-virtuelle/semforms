@@ -1,0 +1,5 @@
+@prefix av: <http://www.assemblee-virtuelle.org/ontologies/v1.owl#> .
+
+<any:ROW> a av:Person .
+<any:ROW> av:likesOrganization <http://ldp.virtual-assembly.org/resource/AV> .
+
