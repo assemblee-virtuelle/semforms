@@ -50,8 +50,7 @@ override def mainPageHeader(implicit lang: String) =
 		<div class="row">
 			<h3>Bienvenue à l'Assemblée Virtuelle</h3>
 		</div>
-		<div class="row"><h3>Bienvenue à l'Assemblée Virtuelle</h3></div>
-    <bold>
+		<bold>
 			<a href="https://github.com/jmvanel/semantic_forms/wiki/Manuel-utilisateur#avertissement-sur-lusage">
            Avertissement !!! A LIRE
 			</a>

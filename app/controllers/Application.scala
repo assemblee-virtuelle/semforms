@@ -36,7 +36,8 @@ object Application extends Controller
     }
   }
 
-  def displayURI(uri: String, blanknode: String = "", Edit: String = "") = {
+  def displayURI(uri: String, blanknode: String = "", Edit: String = "",
+      formuri: String="") = {
     Action { implicit request =>
       println(s"""displayURI: $request IP ${request.remoteAddress}, host ${request.host}
          displayURI headers ${request.headers}
@@ -46,17 +47,19 @@ object Application extends Controller
       val lang = chooseLanguage(request)
       val title = labelForURITransaction(uri, lang)
       outputMainPage(
-        htmlForm(uri, blanknode, editable = Edit != "",
-        lang), lang, title=title )
+        htmlForm(uri, blanknode, editable = Edit != "", lang, formuri),
+        lang, title=title )
+      // TODO record in TDB like timestamp & history: request.remoteAddress, request.host
     }
   }
 
-  def form(uri: String, blankNode: String = "", Edit: String = "") = {
+  def form(uri: String, blankNode: String = "", Edit: String = "", formuri: String ="") = {
     Action { implicit request =>
       println("form: " + request + " displayURI: " + Edit)
       val lang = chooseLanguage(request)
       Ok(htmlFormElemJustFields(uri: String, hrefDisplayPrefix, blankNode,
-        editable = Edit != "", lang))
+        editable = Edit != "", lang, formuri))
+        .as("text/html; charset=utf-8")
     }
   }
     
