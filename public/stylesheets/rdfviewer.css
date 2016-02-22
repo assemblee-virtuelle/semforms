@@ -160,30 +160,24 @@ polygon.arrowhead {
   -webkit-print-color-adjust: exact;
 }
 .compass{
-    fill:  #fff;
-    stroke:  #000;
-    stroke-width:  1.5;
-  }
-  .button{
-    fill:  #225EA8;
-    stroke:  #0C2C84;
-    stroke-miterlimit:	6;
-    stroke-linecap:  round;
-  }
-  .button:hover{
-    stroke-width:  2;
-  }
-  .plus-minus{
-    fill:  #fff;
-    pointer-events: none;
-  }
-body
-{
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  overflow:hidden;
+  fill:  #fff;
+  stroke:  #000;
+  stroke-width:  1.5;
 }
+.button{
+  fill:  #225EA8;
+  stroke:  #0C2C84;
+  stroke-miterlimit:	6;
+  stroke-linecap:  round;
+}
+.button:hover{
+  stroke-width:  2;
+}
+.plus-minus{
+  fill:  #fff;
+  pointer-events: none;
+}
+  
 #content {
   height: 85%;
   top: 125;
