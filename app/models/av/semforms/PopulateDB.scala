@@ -15,8 +15,8 @@ trait PopulateDB[Rdf <: RDF, DATASET]
    * replace Same Language Triples in named graph `graphURI`
    *  with the triples coming from given `url`
    */
-  def setSpecificFormConfig() = {
-    implicit val graph: Rdf#Graph = allNamedGraph
+  def setSpecificFormConfig(implicit graph: Rdf#Graph) = {
+//    implicit val graph: Rdf#Graph = allNamedGraph
     replaceSameLanguageTriples(new URL(
       "https://raw.githubusercontent.com/assemblee-virtuelle/pair/master/form_labels.ttl"),
       "rdf-i18n")

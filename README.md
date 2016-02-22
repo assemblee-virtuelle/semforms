@@ -16,6 +16,15 @@ To re-load the database from N-Triples format (possibly delete the TDB directory
 
     sbt "runMain tdb.tdbloader --loc=TDB dump.nq "
 
+To load a specific Turtle or RDF file or URL:
+ 
+    runMain tdb.tdbloader --loc=TDB --graph=urn:data/myorganization persons.ttl
+    runMain tdb.tdbloader --loc=TDB --graph=urn:data/myorganization http://mysite.org/data/persons.ttl
+    
+*CAUTION:*
+Do not load data in a named graph (argument --graph below) whose name is a relative URI, like "blabla", or "a/b/c" . Use an absolute URI like urn:data/myorganization or an HTTP URL (see URI spec. https://tools.ietf.org/html/rfc3986 ).
+
+
 To delete and reload ontologies (vocabularies) and form specifications:
 
     sbt "runMain av.semforms.PopulateDBApp"

@@ -34,5 +34,7 @@ object PopulateDBApp extends JenaModule
   storeContentInNamedGraph(form_specs_owl)
 
   loadFromGitHubRDFI18NTranslations()
-  setSpecificFormConfig()
+  implicit val graph: Rdf#Graph =
+    rdfStore.r( dataset, { allNamedGraph }) . get
+  setSpecificFormConfig
 }
